@@ -1,0 +1,58 @@
+<div class="max-w-4xl mx-auto p-6 bg-gradient-to-b from-blue-50 to-white">
+  <!-- Hero Section -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-blue-800 mb-4">{@title}</h1>
+    <p class="text-xl text-gray-600 mb-6">{@description}</p>
+    
+    <!-- Fish Emoji -->
+    <div class="text-6xl mb-4">🐠🐟🦈</div>
+  </div>
+
+  <!-- Community Stats -->
+  <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">🐟 Our Fish Community</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="text-center bg-blue-50 p-4 rounded-lg">
+        <div class="text-3xl font-bold text-blue-600">{@member_count}</div>
+        <div class="text-gray-600">Fish Enthusiasts</div>
+      </div>
+      <div class="text-center bg-green-50 p-4 rounded-lg">
+        <div class="text-3xl font-bold text-green-600">30,000+</div>
+        <div class="text-gray-600">Fish Species</div>
+      </div>
+      <div class="text-center bg-yellow-50 p-4 rounded-lg">
+        <div class="text-3xl font-bold text-yellow-600">450M</div>
+        <div class="text-gray-600">Years of Evolution</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fish Facts Section -->
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">🌊 Amazing Fish Facts</h2>
+    
+    <div class="grid gap-4">
+      <%= for {fact, index} <- Enum.with_index(@facts) do %>
+        <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border-l-4 border-blue-400">
+          <div class="flex-shrink-0">
+            <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-500 text-white rounded-full text-sm font-semibold">
+              {index + 1}
+            </span>
+          </div>
+          <p class="text-gray-700 leading-relaxed">{fact}</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="text-center mt-12">
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ready to Dive In?</h3>
+    <p class="text-gray-600 mb-6">Join our community of fish lovers and share your aquatic knowledge!</p>
+    <.link navigate={~p"/"}>
+      <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200">
+        Explore Topics
+      </button>
+    </.link>
+  </div>
+</div>
