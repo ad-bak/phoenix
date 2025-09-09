@@ -1,12 +1,9 @@
-defmodule Discuss.Repo.Migrations.AddTopics do
+defmodule Discuss.Repo.Migrations.AddUserIdToTopics do
   use Ecto.Migration
 
   def change do
-    create table(:topics) do
-      add :title, :string, null: false
+    alter table(:topics) do
       add :user_id, references(:users, on_delete: :delete_all)
-
-      timestamps()
     end
 
     create index(:topics, [:user_id])

@@ -1,0 +1,41 @@
+<div class="container mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Discussion Topics</h1>
+    <.link href={~p"/new"} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      New Topic
+    </.link>
+  </div>
+
+  <%= if @topics == [] do %>
+    <div class="text-center text-gray-500 mt-8">
+      <p class="text-lg">No topics yet. Be the first to start a discussion!</p>
+    </div>
+  <% else %>
+    <div class="bg-white shadow-md rounded-lg">
+      <%= for topic <- @topics do %>
+        <div class="border-b last:border-b-0 hover:bg-gray-50">
+          <.link href={~p"/#{topic.id}"} class="block p-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="text-lg font-semibold text-blue-600 hover:text-blue-800">
+                  <%= topic.title %>
+                </h3>
+                <p class="text-sm text-gray-500 mt-1">
+                  Created <%= Calendar.strftime(topic.inserted_at, "%B %d, %Y") %>
+                </p>
+              </div>
+              <div class="flex gap-2">
+                <.link href={~p"/#{topic.id}/edit"} class="text-sm bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded">
+                  Edit
+                </.link>
+                <.link href={~p"/#{topic.id}"} class="text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">
+                  View
+                </.link>
+              </div>
+            </div>
+          </.link>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
